@@ -1,0 +1,14 @@
+# better-assert/Cargo.toml
+
+[package]
+name = "better-assert"
+version = "0.3.0"
+edition = "2024"
+
+[dependencies]
+better-logger = { version = "1.0.2", default-features = false, optional = true }
+
+[features]
+native = ["better-logger/native"]
+wasm = ["better-logger/wasm"]
+default = ["native"]
