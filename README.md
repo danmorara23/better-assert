@@ -15,8 +15,8 @@
 ## 😺 ONE: Declare Feature
 ```rust
 /* no default feature enabled (enabling both at once won't compile) */
-better-assert = { version = "0.3.1", features = ["native"] }
-better-assert = { version = "0.3.1", features = ["wasm"] }
+better-assert = { version = "0.3.2", features = ["native"] }
+better-assert = { version = "0.3.2", features = ["wasm"] }
 ```
 ## 🦮 TWO: Incorporate better-logger
 #### See the [better-logger docs](https://crates.io/crates/better-logger) for the quick-start
