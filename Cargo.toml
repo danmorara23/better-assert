@@ -4,6 +4,16 @@
 name = "better-assert"
 version = "0.3.1"
 edition = "2024"
+rust-version = "1.85.1"
+authors = ["Gistyr LLC <contact@gistyr.dev>"]
+description = "Assertion helpers with built-in logging powered by better-logger"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Gistyr/better-assert"
+homepage = "https://github.com/Gistyr/better-assert"
+documentation = "https://docs.rs/better-assert"   
+keywords = ["logging", "panic", "assert", "assert_eq", "track-caller"]
+categories = ["development-tools", "development-tools::testing"]
 
 [dependencies]
 better-logger = { version = "1.0.2", default-features = false, optional = true }
