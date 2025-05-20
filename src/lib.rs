@@ -27,7 +27,7 @@ use std::any::type_name;
 
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[track_caller]
-pub fn log_assert_eq<G>(left: G, right: G) 
+pub fn log_assert_eq<G>(left: &G, right: &G) 
 where
     G: PartialEq + Debug,
 {
@@ -41,22 +41,22 @@ where
 
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[track_caller]
-pub fn log_assert_ne<G>(left: G, right: G) 
+pub fn log_assert_ne<G>(left: &G, right: &G) 
 where
     G: PartialEq + Debug,
 {
     if !(left != right) {
         let location = Location::caller();
         let type_of_g = type_name::<G>();
-        logger::error!(r#"Assertion Failed: left "{:?}" != right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
-        panic!(r#"Assertion Failed: left "{:?}" != right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
+        logger::error!(r#"Assertion Failed: left "{:?}" == right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
+        panic!(r#"Assertion Failed: left "{:?}" == right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
     }
 }
 
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[cfg(debug_assertions)]
 #[track_caller]
-pub fn debug_log_assert_eq<G>(left: G, right: G) 
+pub fn debug_log_assert_eq<G>(left: &G, right: &G) 
 where
     G: PartialEq + Debug,
 {
@@ -71,7 +71,7 @@ where
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[cfg(not(debug_assertions))]
 #[track_caller]
-pub fn debug_log_assert_eq<G>(left: G, right: G) 
+pub fn debug_log_assert_eq<G>(_left: &G, _right: &G) 
 where
     G: PartialEq + Debug,
 {
@@ -81,22 +81,22 @@ where
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[cfg(debug_assertions)]
 #[track_caller]
-pub fn debug_log_assert_ne<G>(left: G, right: G) 
+pub fn debug_log_assert_ne<G>(left: &G, right: &G) 
 where
     G: PartialEq + Debug,
 {
     if !(left != right) {
         let location = Location::caller();
         let type_of_g = type_name::<G>();
-        logger::error!(r#"Assertion Failed: left "{:?}" != right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
-        panic!(r#"Assertion Failed: left "{:?}" != right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
+        logger::error!(r#"Assertion Failed: left "{:?}" == right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
+        panic!(r#"Assertion Failed: left "{:?}" == right "{:?}" (Location: {}:{}:{}) (Type: {})"#, left, right, location.file(), location.line(), location.column(), type_of_g);
     }
 }
 
 #[cfg(any(feature = "native", feature = "wasm"))]
 #[cfg(not(debug_assertions))]
 #[track_caller]
-pub fn debug_log_assert_ne<G>(left: G, right: G) 
+pub fn debug_log_assert_ne<G>(_left: &G, _right: &G) 
 where
     G: PartialEq + Debug,
 {
