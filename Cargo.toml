@@ -2,7 +2,7 @@
 
 [package]
 name = "better-assert"
-version = "0.3.1"
+version = "0.3.2"
 edition = "2024"
 rust-version = "1.85.1"
 authors = ["Gistyr LLC <contact@gistyr.dev>"]
